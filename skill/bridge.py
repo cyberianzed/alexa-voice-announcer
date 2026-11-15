@@ -32,6 +32,7 @@ SKILL_ID = ENV.get("SKILL_ID", "")
 AGENT_URL = ENV.get("AGENT_URL", "http://127.0.0.1:8642/v1/responses")
 AGENT_MODEL = ENV.get("AGENT_MODEL", "agent")
 AGENT_KEY = ENV.get("AGENT_KEY", "")
+AGENT_USER = ENV.get("AGENT_USER", "")
 NOTIFY_CMD = ENV.get("NOTIFY_CMD", "")       # shell command that reads a message on stdin (e.g. bin/notify-telegram)
 NOTIFY_NAME = ENV.get("NOTIFY_NAME", "Telegram")
 NAME = ENV.get("ASSISTANT_NAME", "Jarvis")
@@ -51,6 +52,8 @@ def log(msg):
 
 def agent(text, prev=None, timeout=900):
     body = {"model": AGENT_MODEL, "input": VOICE_RULES + text}
+    if AGENT_USER:                 # stable session key for agents that use it (e.g. OpenClaw)
+        body["user"] = AGENT_USER
     if prev:
         body["previous_response_id"] = prev
     headers = {"Content-Type": "application/json"}

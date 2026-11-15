@@ -15,7 +15,31 @@ curl -X POST localhost:8095/speak -H 'Content-Type: application/json' -d '{"text
 
 > Keywords: Alexa announcement API, make Alexa speak text, Echo text-to-speech from a script, free Voice Monkey alternative,
 > unlimited Alexa notifications, Alexa TTS from cron / Python / Node / Telegram, self-hosted Alexa announcer, Alexa skill
-> for an AI agent, talk to your AI agent through Alexa, Jarvis for Alexa.
+> for an AI agent, talk to your AI agent through Alexa, Jarvis for Alexa, Hermes Agent Alexa, OpenClaw Alexa voice.
+
+## What you can do with it
+
+Pair it with an AI agent and Alexa becomes a voice for everything the agent can see. **[More use cases ->](docs/USE-CASES.md)**
+
+- **Morning briefing:** at 7:30 the agent checks your calendar, weather and email and *speaks* a 30-second summary.
+- **Reminders with live data:** *"At 5:45 remind me to leave, with traffic and my flight status."*
+- **Ask anything:** *"Alexa, ask Jarvis what's on my calendar"*, *"... how did yesterday's reel do?"*
+- **Long jobs:** *"Alexa, ask Jarvis to research our competitors"* -> "On it" -> the headline is spoken when done.
+- **Accountability check-ins:** the Echo asks *"What are you working on?"*, listens, and nudges you back to your main task.
+- **Alerts out loud:** website down, CI failed, new order, backup missed.
+- **Messages home from any chat:** *"tell Alexa I'm 10 minutes away"* on Telegram -> the Echo at home says it.
+
+## Works with your agent
+
+| Agent | Guide |
+|---|---|
+| **Hermes Agent** (Nous Research) | [docs/agents/hermes-agent.md](docs/agents/hermes-agent.md) |
+| **OpenClaw** | [docs/agents/openclaw.md](docs/agents/openclaw.md) |
+| Anything with an OpenAI-compatible `/v1/responses` API | set `AGENT_URL` in `skill/bridge.env` |
+| No agent at all | the announcer alone: `curl` / `alexa-announce` from any script or cron |
+
+Curious how it can be free and still work on the Alexa phone app? See **[How it works](docs/HOW-IT-WORKS.md)**:
+the same skill-launch trick Voice Monkey uses, rebuilt on your own server.
 
 ---
 
@@ -81,6 +105,7 @@ bin/                  alexa-announce, alexa-say, jarvis-focus, notify-telegram
 systemd/              user services and the check-in timer
 deploy/Caddyfile.example  HTTPS in front of the skill
 agent-instructions/   drop-in instructions so an AI agent uses all of this
+docs/                 USE-CASES.md, HOW-IT-WORKS.md, agents/ (Hermes Agent, OpenClaw)
 ```
 
 ## Requirements
