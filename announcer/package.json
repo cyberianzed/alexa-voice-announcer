@@ -1,0 +1,19 @@
+{
+  "name": "alexa-voice-announcer",
+  "version": "1.0.0",
+  "description": "Free, unlimited, self-hosted Alexa announcements: make an Echo or the Alexa app speak any text from your server.",
+  "main": "echo.js",
+  "private": true,
+  "scripts": {
+    "start": "node echo.js",
+    "postinstall": "node patch-alexa-cookie.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["alexa", "echo", "announcement", "tts", "voice-monkey-alternative", "self-hosted", "home-automation"],
+  "license": "MIT",
+  "dependencies": {
+    "alexa-remote2": "^8.1.1"
+  }
+}

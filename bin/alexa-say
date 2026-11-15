@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Put a short update in the skill's inbox (heard on "Alexa, ask Jarvis what's new").   alexa-say "Your render is done."
+set -e
+[ -n "$1" ] || { echo 'usage: alexa-say "short spoken update"'; exit 2; }
+APP="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+cd "$APP/skill"
+exec .venv/bin/python -c 'import sys, bridge; bridge.inbox_add(sys.argv[1]); print("queued for Alexa")' "$*"

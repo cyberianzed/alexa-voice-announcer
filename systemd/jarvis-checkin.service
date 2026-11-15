@@ -1,0 +1,8 @@
+[Unit]
+Description=Jarvis accountability check-in (fixed text, no AI)
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/alexa-voice-announcer/skill
+ExecStart=%h/alexa-voice-announcer/skill/.venv/bin/python focus.py checkin
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin

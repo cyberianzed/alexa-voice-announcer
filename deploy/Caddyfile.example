@@ -1,0 +1,5 @@
+# Alexa needs a public HTTPS endpoint with a valid certificate. Caddy gets one from Let's Encrypt automatically.
+# No domain? Use your server's IP with sslip.io, e.g. 203-0-113-10.sslip.io. Open ports 80 and 443.
+your-host.example.com {
+	reverse_proxy 127.0.0.1:8090
+}

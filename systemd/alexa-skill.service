@@ -1,0 +1,13 @@
+[Unit]
+Description=Jarvis Alexa skill backend (localhost 8090; HTTPS reverse proxy in front)
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/alexa-voice-announcer/skill
+ExecStart=%h/alexa-voice-announcer/skill/.venv/bin/python bridge.py
+Restart=always
+RestartSec=5
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Jarvis check-ins (edit the times and zone, then: systemctl --user daemon-reload)
+
+[Timer]
+OnCalendar=Mon..Sat *-*-* 11,15,18:00:00 UTC
+Persistent=false
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Send stdin to your Telegram chat with a bot (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID in skill/bridge.env).
+# Use as NOTIFY_CMD. Get a token from @BotFather; your chat ID from https://api.telegram.org/bot<TOKEN>/getUpdates
+set -e
+APP="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+val() { grep -E "^$1=" "$APP/skill/bridge.env" | tail -1 | cut -d= -f2- | tr -d ' '; }
+TOKEN=$(val TELEGRAM_BOT_TOKEN); CHAT=$(val TELEGRAM_CHAT_ID)
+[ -n "$TOKEN" ] && [ -n "$CHAT" ] || { echo "notify-telegram: set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID" >&2; exit 1; }
+curl -fsS "https://api.telegram.org/bot$TOKEN/sendMessage" --data-urlencode "chat_id=$CHAT" --data-urlencode "text=$(cat)" >/dev/null

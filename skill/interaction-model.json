@@ -1,0 +1,97 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "jarvis",
+      "intents": [
+        {
+          "name": "AskAgentIntent",
+          "slots": [{"name": "query", "type": "AMAZON.SearchQuery"}],
+          "samples": [
+            "to {query}",
+            "tell me {query}",
+            "can you {query}",
+            "please {query}",
+            "what is {query}",
+            "how {query}",
+            "when {query}",
+            "start {query}",
+            "check {query}",
+            "find {query}",
+            "send {query}",
+            "show {query}",
+            "read {query}",
+            "give me {query}",
+            "i want {query}",
+            "remind me {query}",
+            "status of {query}"
+          ]
+        },
+        {
+          "name": "UpdatesIntent",
+          "slots": [],
+          "samples": [
+            "what's new",
+            "what is new",
+            "any updates",
+            "any news",
+            "read my updates",
+            "my updates",
+            "do i have messages",
+            "read my messages"
+          ]
+        },
+        {
+          "name": "SetPriorityIntent",
+          "slots": [{"name": "query", "type": "AMAZON.SearchQuery"}],
+          "samples": [
+            "my main task today is {query}",
+            "today's main task is {query}",
+            "my priority today is {query}",
+            "my focus today is {query}",
+            "set my main task to {query}"
+          ]
+        },
+        {
+          "name": "PriorityQueryIntent",
+          "slots": [],
+          "samples": [
+            "what is my main task",
+            "what's my main task today",
+            "what is my priority today",
+            "what should i focus on"
+          ]
+        },
+        {
+          "name": "CheckinIntent",
+          "slots": [],
+          "samples": [
+            "check in",
+            "check in with me",
+            "do a check in",
+            "start a check in"
+          ]
+        },
+        {
+          "name": "CheckinAnswerIntent",
+          "slots": [{"name": "query", "type": "AMAZON.SearchQuery"}],
+          "samples": [
+            "i am {query}",
+            "i'm {query}",
+            "i am working on {query}",
+            "i'm working on {query}",
+            "working on {query}",
+            "i was {query}"
+          ]
+        },
+        {"name": "AMAZON.YesIntent", "samples": []},
+        {"name": "AMAZON.NoIntent", "samples": []},
+        {"name": "AMAZON.CancelIntent", "samples": []},
+        {"name": "AMAZON.HelpIntent", "samples": []},
+        {"name": "AMAZON.StopIntent", "samples": []},
+        {"name": "AMAZON.NavigateHomeIntent", "samples": []},
+        {"name": "AMAZON.FallbackIntent", "samples": []}
+      ],
+      "types": []
+    }
+  }
+}

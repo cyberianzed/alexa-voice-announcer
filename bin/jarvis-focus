@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Today's main task and check-ins.   jarvis-focus priority "Finish the report" | show | checkin | log "<answer>"
+APP="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+cd "$APP/skill" && exec .venv/bin/python focus.py "$@"

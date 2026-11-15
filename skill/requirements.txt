@@ -1,0 +1,3 @@
+ask-sdk-core>=1.19
+ask-sdk-model>=1.80
+ask-sdk-webservice-support>=1.3

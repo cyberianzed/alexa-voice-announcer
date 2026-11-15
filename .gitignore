@@ -1,0 +1,17 @@
+# secrets and personal state: never commit
+*.env
+!*.env.example
+cookie.json
+paired_user
+inbox.jsonl
+checkin.json
+checkins.jsonl
+today.json
+speak.json
+
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.bak*
+_raw/

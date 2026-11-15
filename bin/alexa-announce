@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Speak a message on the Echo / Alexa app now.   alexa-announce "Lunch is ready"
+# Uses the free announcer (opens your skill, which speaks it); falls back to Voice Monkey if configured.
+# Quiet hours (QUIET_HOURS=HHMM-HHMM in skill/bridge.env, local TIMEZONE, or "off"): not spoken, says so.
+set -e
+[ -n "$1" ] || { echo 'usage: alexa-announce "message"'; exit 2; }
+APP="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+cd "$APP/skill"
+val() { grep -E "^$1=" bridge.env 2>/dev/null | tail -1 | cut -d= -f2- | tr -d ' '; }
+Q=$(val QUIET_HOURS); Q=${Q:-off}
+if [ "$Q" != "off" ]; then
+  TZV=$(val TIMEZONE); NOW=$(TZ=${TZV:-UTC} date +%H%M); S=${Q%-*}; E=${Q#*-}
+  if { [ "$S" -gt "$E" ] && { [ "$NOW" -ge "$S" ] || [ "$NOW" -lt "$E" ]; }; } || { [ "$S" -le "$E" ] && [ "$NOW" -ge "$S" ] && [ "$NOW" -lt "$E" ]; }; then
+    echo "quiet hours ($Q): not announced"; exit 0
+  fi
+fi
+exec .venv/bin/python focus.py say "$*"

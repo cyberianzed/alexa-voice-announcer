@@ -1,0 +1,13 @@
+[Unit]
+Description=alexa-voice-announcer: speak text on Echo / Alexa app (localhost API on 8095)
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/alexa-voice-announcer/announcer
+ExecStart=/usr/bin/env node echo.js
+Restart=always
+RestartSec=10
+Environment=PATH=%h/.local/node/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target
